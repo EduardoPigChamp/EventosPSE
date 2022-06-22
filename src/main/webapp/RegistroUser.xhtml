@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./WEB-INF/newTemplate.xhtml">
+
+            <ui:define name="content">
+                <h:form style="display: flex; flex-direction: column; text-align: center">
+                    <h:outputLabel for="Nombre" value="Nombre:"/>
+                    <h:inputText required="true" id="Nombre" value="#{userBEAN.nombre}"/>
+                    <h:message for="Nombre"/>
+                    <h:outputLabel for="Apellido1" value="Apellido2" />
+                    <h:inputText required="true" id="Apellido1" value="#{userBEAN.apellido1}" />
+                    <h:message for="Apellido1"/>
+                    <h:outputLabel for="Apellido2" value="Apellido2"/>
+                    <h:inputText required="true" id="Apellido2" value="#{userBEAN.apellido2}"/>
+                    <h:message for="Apellido2"/>
+                    <h:outputLabel for="DNI" value="DNI:"/>
+                    <h:inputText required="true" validatorMessage="DNI invalido" id="DNI" value="#{userBEAN.dni}">
+                        <f:validateRegex pattern="[0-9]{8}[A-Za-z]" />
+                    </h:inputText>
+                    <h:message for="DNI"/>
+                    <h:outputLabel for="Telefono" value="Teléfono:"/>
+                    <h:inputText required="true" validatorMessage="No ha introducido un telefono válido" id="Telefono" value="#{userBEAN.telefono}">
+                        <f:validateRegex pattern="[0-9]{9}" />
+                    </h:inputText>
+                    <h:message for="Telefono"/>
+                    <h:outputLabel for="Password" value="Password:"/>
+                    <h:inputSecret required="true" id="Password" value="#{userBEAN.pass}" />
+                    <h:message for="Password"/>
+                    <h:outputLabel for="fecha_nacimiento" value="Fecha Nacimiento:" />
+                    <h:inputText required="true" id="fecha_nacimiento" value="#{userBEAN.fechaNacimiento}">
+                        <f:convertDateTime pattern="dd-MM-yyyy" />
+                    </h:inputText>
+                    <h:commandButton value="Registrar" action="#{userBEAN.registrar()}" />                
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
