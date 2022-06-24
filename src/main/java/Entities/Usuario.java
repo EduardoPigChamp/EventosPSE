@@ -10,14 +10,13 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -39,22 +38,24 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Usuario.findByApellido2", query = "SELECT u FROM Usuario u WHERE u.apellido2 = :apellido2"),
     @NamedQuery(name = "Usuario.findByDni", query = "SELECT u FROM Usuario u WHERE u.dni = :dni"),
     @NamedQuery(name = "Usuario.findByFechaNacimiento", query = "SELECT u FROM Usuario u WHERE u.fechaNacimiento = :fechaNacimiento"),
-    @NamedQuery(name = "Usuario.findByTelefono", query = "SELECT u FROM Usuario u WHERE u.telefono = :telefono")})
+    @NamedQuery(name = "Usuario.findByTelefono", query = "SELECT u FROM Usuario u WHERE u.telefono = :telefono"),
+    @NamedQuery(name = "Usuario.findByOrganizator", query = "SELECT u FROM Usuario u WHERE u.organizator = :organizator")})
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Size(max = 2147483647)
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 2147483647)
     @Column(name = "user_name")
     private String userName;
     @Column(name = "pass")
     private Integer pass;
     @Column(name = "adminn")
     private Integer adminn;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "identifier")
-    private Integer identifier;
+    private int identifier;
     @Size(max = 2147483647)
     @Column(name = "nombre")
     private String nombre;
@@ -73,11 +74,18 @@ public class Usuario implements Serializable {
     @Size(max = 2147483647)
     @Column(name = "telefono")
     private String telefono;
+    @Column(name = "organizator")
+    private Integer organizator;
 
     public Usuario() {
     }
 
-    public Usuario(Integer identifier) {
+    public Usuario(String userName) {
+        this.userName = userName;
+    }
+
+    public Usuario(String userName, int identifier) {
+        this.userName = userName;
         this.identifier = identifier;
     }
 
@@ -105,11 +113,11 @@ public class Usuario implements Serializable {
         this.adminn = adminn;
     }
 
-    public Integer getIdentifier() {
+    public int getIdentifier() {
         return identifier;
     }
 
-    public void setIdentifier(Integer identifier) {
+    public void setIdentifier(int identifier) {
         this.identifier = identifier;
     }
 
@@ -161,10 +169,18 @@ public class Usuario implements Serializable {
         this.telefono = telefono;
     }
 
+    public Integer getOrganizator() {
+        return organizator;
+    }
+
+    public void setOrganizator(Integer organizator) {
+        this.organizator = organizator;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (identifier != null ? identifier.hashCode() : 0);
+        hash += (userName != null ? userName.hashCode() : 0);
         return hash;
     }
 
@@ -175,7 +191,7 @@ public class Usuario implements Serializable {
             return false;
         }
         Usuario other = (Usuario) object;
-        if ((this.identifier == null && other.identifier != null) || (this.identifier != null && !this.identifier.equals(other.identifier))) {
+        if ((this.userName == null && other.userName != null) || (this.userName != null && !this.userName.equals(other.userName))) {
             return false;
         }
         return true;
@@ -183,7 +199,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.eventospse.Usuario[ identifier=" + identifier + " ]";
+        return "Entities.Usuario[ userName=" + userName + " ]";
     }
     
 }

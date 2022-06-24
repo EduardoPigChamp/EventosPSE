@@ -14,15 +14,15 @@
     <h:body>
 
         <div id="top">
+            <h><strong>eventos.com</strong></h>
         </div>
         <div>
             <div id="left">
                 <h:form class="row_form">
-                    <!--h:commandButton value="Inicio" class="left_button" /-->
-                    <h:commandButton value="Iniciar Sesión" class="left_button" action="/RegistroUser" />
-                    <h:commandButton value="Cerrar Sesión" class="left_button" />
-                    <h:commandButton value="Registrarse" class="left_button" action="/registroFirst"/>
-                    <h:commandButton value="Pagina de Usuario" class="left_button" />
+                    <h:commandButton value="Iniciar Sesión" class="left_button" action="/signIn" rendered="#{!sessionBEAN.checkSession()}" />
+                    <h:commandButton value="Cerrar Sesión" class="left_button" rendered="#{sessionBEAN.checkSession()}" action="#{sessionBEAN.closeSession()}" />
+                    <h:commandButton value="Registrarse" class="left_button" action="/registroFirst" rendered="#{!sessionBEAN.checkSession()}" />
+                    <h:commandButton value="Pagina de Usuario" class="left_button" rendered="#{sessionBEAN.checkSession()}"/>
                 </h:form>
             </div>
             <div id="content" class="left_content">

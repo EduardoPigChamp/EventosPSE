@@ -18,28 +18,24 @@ import javax.inject.Named;
  */
 
 @Named
-@RequestScoped    
+@RequestScoped 
 public class userBEAN {
-    
+
     @EJB
-    final UsuarioFacadeREST service;
+    private final UsuarioFacadeREST service = new UsuarioFacadeREST();
     
     private String userName;
-    private String pass;
+    private Integer pass;
     private Integer adminn;
-    private Integer identifier;
+    private int identifier;
     private String nombre;
     private String apellido1;
     private String apellido2;
     private String dni;
     private Date fechaNacimiento;
     private String telefono;
+    private Integer organizator;
 
-    public userBEAN()
-    {
-        service = new UsuarioFacadeREST();
-    }
-    
     public String getUserName() {
         return userName;
     }
@@ -48,11 +44,11 @@ public class userBEAN {
         this.userName = userName;
     }
 
-    public String getPass() {
+    public Integer getPass() {
         return pass;
     }
 
-    public void setPass(String pass) {
+    public void setPass(Integer pass) {
         this.pass = pass;
     }
 
@@ -64,11 +60,11 @@ public class userBEAN {
         this.adminn = adminn;
     }
 
-    public Integer getIdentifier() {
+    public int getIdentifier() {
         return identifier;
     }
 
-    public void setIdentifier(Integer identifier) {
+    public void setIdentifier(int identifier) {
         this.identifier = identifier;
     }
 
@@ -119,8 +115,16 @@ public class userBEAN {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
+
+    public Integer getOrganizator() {
+        return organizator;
+    }
+
+    public void setOrganizator(Integer organizator) {
+        this.organizator = organizator;
+    }
     
-    public void registrar()
+    public void registerUser()
     {
         Usuario user = new Usuario();
         
@@ -130,14 +134,31 @@ public class userBEAN {
         user.setDni(dni);
         user.setFechaNacimiento(fechaNacimiento);
         user.setNombre(nombre);
-        user.setPass(pass.hashCode());
+        user.setOrganizator(0);
+        user.setPass(pass);
         user.setTelefono(telefono);
         user.setUserName(userName);
         
-        try{
-            service.create(user);
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+        service.create(user);
     }
+    
+    public void registerOrganizator()
+    {
+        Usuario user = new Usuario();
+        
+        user.setAdminn(0);
+        user.setApellido1(apellido1);
+        user.setApellido2(apellido2);
+        user.setDni(dni);
+        user.setFechaNacimiento(fechaNacimiento);
+        user.setNombre(nombre);
+        user.setOrganizator(1);
+        user.setPass(pass);
+        user.setTelefono(telefono);
+        user.setUserName(userName);
+        
+        service.create(user);
+    }
+    
+    
 }
