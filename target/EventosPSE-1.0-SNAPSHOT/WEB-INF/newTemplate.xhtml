@@ -21,9 +21,9 @@
                 <h:form class="row_form">
                     <h:commandButton value="Iniciar Sesión" class="left_button" action="/signIn" rendered="#{!sessionBEAN.checkSession()}" />
                     <h:commandButton value="Cerrar Sesión" class="left_button" rendered="#{sessionBEAN.checkSession()}" action="#{sessionBEAN.closeSession()}" />
-                    <h:commandButton value="Registrarse" class="left_button" action="/registroFirst" rendered="#{!sessionBEAN.checkSession()}" />
+                    <h:commandButton value="Registrarse" class="left_button" rendered="#{!sessionBEAN.checkSession()}" action="/registerUser"/>
                     <h:commandButton value="Pagina de Usuario" class="left_button" rendered="#{sessionBEAN.checkSession()}"/>
-                    <h:commandButton value="Crear Organizador" class="left_button" rendered="#{sessionBEAN.isAdmin()}" action="/newOrg" />
+                    <h:commandButton value="Crear Organizador" class="left_button" rendered="#{sessionBEAN.isAdmin()}" action="/registerOrganizator" />
                     <h:commandButton value="Crear Evento" class="left_button" rendered="#{sessionBEAN.isOrganizator()}" action="/newEvent" />
                 </h:form>
             </div>

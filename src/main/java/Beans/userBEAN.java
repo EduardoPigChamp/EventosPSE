@@ -138,6 +138,7 @@ public class userBEAN {
         user.setPass(pass);
         user.setTelefono(telefono);
         user.setUserName(userName);
+        user.setIdentifier(0);
         
         service.create(user);
     }

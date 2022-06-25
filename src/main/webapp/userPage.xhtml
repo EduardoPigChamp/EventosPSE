@@ -7,12 +7,12 @@
 
     <body>
 
-        <ui:composition template="./WEB-INF/newTemplate.xhtml">
+        <ui:composition template="./../WEB-INF/newTemplate.xhtml">
 
             <ui:define name="content">
                 <h:form style="display: flex; flex-direction: column; text-align: center">
                     <h:outputLabel for="Nombre" value="Nombre:"/>
-                    <h:inputText required="true" id="Nombre" value="#{userBEAN.nombre}"/>
+                    <h:inputText required="true" id="Nombre" value="#{session}"/>
                     <h:message for="Nombre"/>
                     <h:outputLabel for="Apellido1" value="Apellido2" />
                     <h:inputText required="true" id="Apellido1" value="#{userBEAN.apellido1}" />
@@ -37,8 +37,7 @@
                     <h:inputText required="true" id="fecha_nacimiento" value="#{userBEAN.fechaNacimiento}">
                         <f:convertDateTime pattern="dd-MM-yyyy" />
                     </h:inputText>
-                    <h:commandButton value="Registrar" action="#{userBEAN.registrar()}" />                
-                </h:form>
+                    <h:commandButton value="Registrar" action="#{userBEAN.registerUser()}" /> 
             </ui:define>
 
         </ui:composition>

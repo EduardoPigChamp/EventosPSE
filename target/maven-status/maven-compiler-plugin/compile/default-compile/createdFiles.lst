@@ -1,6 +1,7 @@
-Beans\SessionBEAN.class
+Converters\passwordConverter.class
 Services\EventosFacadeREST.class
 Entities\Usuario.class
+Beans\sessionBEAN.class
 Services\ApplicationConfig.class
 Beans\userBEAN.class
 Entities\Eventos.class

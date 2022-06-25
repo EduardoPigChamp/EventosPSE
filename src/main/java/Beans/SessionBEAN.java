@@ -15,7 +15,7 @@ import javax.inject.Named;
 
 @Named
 @RequestScoped
-public class SessionBEAN {
+public class sessionBEAN {
     
     @EJB
     UsuarioFacadeREST service = new UsuarioFacadeREST();
@@ -106,5 +106,47 @@ public class SessionBEAN {
         {
             return false;
         }
+    }
+    
+    //METODOS PARA ACCEDER A LOS ATRIBUTOS DE LA SESION
+    
+    public String getApellido1()
+    {
+        return getSession().getApellido1();
+    }
+    
+    public String getApellido2()
+    {
+        return getSession().getApellido2();
+    }
+    
+    public String getNombre()
+    {
+        return getSession().getNombre();
+    }
+    
+    public String getDni()
+    {
+        return getSession().getDni();
+    }
+    
+    public String getTelefono()
+    {
+        return getSession().getTelefono();
+    }
+    
+    public String getUserName()
+    {
+        return getSession().getUserName();
+    }
+    
+    public String getBirthDate()
+    {
+        return getSession().getFechaNacimiento().toString();
+    }
+    
+    public String getPass()
+    {
+        return getSession().getPass().toString();
     }
 }
