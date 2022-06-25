@@ -77,4 +77,34 @@ public class SessionBEAN {
         
         return user;
     }
+    
+    public boolean isAdmin()
+    {
+        Usuario user;
+        
+        if(checkSession())
+        {
+            user = getSession();
+            return user.getAdminn() == 1;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
+    public boolean isOrganizator()
+    {
+        Usuario user;
+        
+        if(checkSession())
+        {
+            user = getSession();
+            return user.getOrganizator() == 1;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

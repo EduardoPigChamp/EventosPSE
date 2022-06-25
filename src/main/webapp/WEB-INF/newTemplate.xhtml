@@ -23,6 +23,8 @@
                     <h:commandButton value="Cerrar Sesión" class="left_button" rendered="#{sessionBEAN.checkSession()}" action="#{sessionBEAN.closeSession()}" />
                     <h:commandButton value="Registrarse" class="left_button" action="/registroFirst" rendered="#{!sessionBEAN.checkSession()}" />
                     <h:commandButton value="Pagina de Usuario" class="left_button" rendered="#{sessionBEAN.checkSession()}"/>
+                    <h:commandButton value="Crear Organizador" class="left_button" rendered="#{sessionBEAN.isAdmin()}" action="/newOrg" />
+                    <h:commandButton value="Crear Evento" class="left_button" rendered="#{sessionBEAN.isOrganizator()}" action="/newEvent" />
                 </h:form>
             </div>
             <div id="content" class="left_content">
