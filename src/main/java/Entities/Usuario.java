@@ -39,7 +39,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Usuario.findByDni", query = "SELECT u FROM Usuario u WHERE u.dni = :dni"),
     @NamedQuery(name = "Usuario.findByFechaNacimiento", query = "SELECT u FROM Usuario u WHERE u.fechaNacimiento = :fechaNacimiento"),
     @NamedQuery(name = "Usuario.findByTelefono", query = "SELECT u FROM Usuario u WHERE u.telefono = :telefono"),
-    @NamedQuery(name = "Usuario.findByOrganizator", query = "SELECT u FROM Usuario u WHERE u.organizator = :organizator")})
+    @NamedQuery(name = "Usuario.findByOrganizator", query = "SELECT u FROM Usuario u WHERE u.organizator = :organizator"),
+    @NamedQuery(name = "Usuario.maxIdentifier", query = "SELECT MAX(u.identifier) FROM Usuario u")})
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -54,6 +55,7 @@ public class Usuario implements Serializable {
     @Column(name = "adminn")
     private Integer adminn;
     @Basic(optional = false)
+    //@GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "identifier")
     private int identifier;
     @Size(max = 2147483647)

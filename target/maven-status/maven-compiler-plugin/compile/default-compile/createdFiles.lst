@@ -1,11 +1,14 @@
 Converters\passwordConverter.class
-Services\EventosFacadeREST.class
-Entities\Usuario.class
+Beans\EventoBean.class
 Beans\sessionBEAN.class
-Services\ApplicationConfig.class
+Beans\LocationBEAN.class
 Beans\userBEAN.class
 Entities\Eventos.class
 Services\UsuarioFacadeREST.class
 Entities\Eventos_.class
+Services\fetchEventsFromInternet.class
+Services\EventosFacadeREST.class
+Entities\Usuario.class
+Services\ApplicationConfig.class
 Services\AbstractFacade.class
 Entities\Usuario_.class

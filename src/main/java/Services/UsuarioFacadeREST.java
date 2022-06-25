@@ -83,9 +83,20 @@ public class UsuarioFacadeREST extends AbstractFacade<Usuario> {
         return String.valueOf(super.count());
     }
 
+    @GET
+    @Path("max")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Integer maxId() {
+        Integer res = (Integer)em.createQuery("SELECT MAX(u.identifier) FROM Usuario u").getSingleResult();
+        if(res == null) res = 0;
+        return res;
+    }
+    
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
+    
+    //CREAR METODO QUE DEVUELVA EL INDEX MAS GRANDE O BORRAR EL INDEX
     
 }

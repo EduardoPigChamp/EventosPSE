@@ -138,7 +138,7 @@ public class userBEAN {
         user.setPass(pass);
         user.setTelefono(telefono);
         user.setUserName(userName);
-        user.setIdentifier(0);
+        user.setIdentifier(service.maxId() + 1);
         
         service.create(user);
     }
@@ -157,9 +157,8 @@ public class userBEAN {
         user.setPass(pass);
         user.setTelefono(telefono);
         user.setUserName(userName);
+        user.setIdentifier(service.maxId() + 1);
         
         service.create(user);
     }
-    
-    
 }

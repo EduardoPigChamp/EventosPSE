@@ -11,6 +11,9 @@
 
             <ui:define name="content">
                 <h:form style="display: flex; flex-direction: column; text-align: center">
+                    <h:outputLabel for="Username" value="Username:"/>
+                    <h:inputText required="true" id="Username" value="#{userBEAN.userName}"/>
+                    <h:message for="Username"/>
                     <h:outputLabel for="Nombre" value="Nombre:"/>
                     <h:inputText required="true" id="Nombre" value="#{userBEAN.nombre}"/>
                     <h:message for="Nombre"/>
@@ -31,7 +34,9 @@
                     </h:inputText>
                     <h:message for="Telefono"/>
                     <h:outputLabel for="Password" value="Password:"/>
-                    <h:inputSecret required="true" id="Password" value="#{userBEAN.pass}" />
+                    <h:inputSecret required="true" id="Password" value="#{userBEAN.pass}">
+                        <f:converter converterId="Converters.passwordConverter"/>
+                    </h:inputSecret>
                     <h:message for="Password"/>
                     <h:outputLabel for="fecha_nacimiento" value="Fecha Nacimiento:" />
                     <h:inputText required="true" id="fecha_nacimiento" value="#{userBEAN.fechaNacimiento}">
