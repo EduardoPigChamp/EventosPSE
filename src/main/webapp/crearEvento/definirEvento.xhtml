@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../WEB-INF/newTemplate.xhtml">
+
+            <ui:define name="content">
+                <h:form style="display: flex; flex-direction: column; text-align: center">
+                    <h:outputLabel for="Nombre" value="Nombre:"/>
+                    <h:inputText required="true" id="Nombre" value="#{crearEvento.nombre}"/>
+                    <h:message for="Nombre"/>
+                    <h:outputLabel for="Ciudad" value="Ciudad:"/>
+                    <h:inputText required="true" id="Ciudad" value="#{crearEvento.ciudad}"/>
+                    <h:message for="Ciudad"/>
+                    <h:outputLabel for="Estadio" value="Estadio" />
+                    <h:inputText required="true" id="Estadio" value="#{crearEvento.estadio}" readonly="true" />
+                    <h:message for="Estadio"/>
+                    <h:outputLabel for="Entradas_Totales" value="Entradas Totales"/>
+                    <h:inputText required="true" id="Entradas_Totales" value="#{crearEvento.entradas_totales}"/>
+                    <h:message for="Entradas_Totales"/>
+                    <h:outputLabel for="fecha" value="Fecha:" />
+                    <h:inputText required="true" id="fecha" value="#{crearEvento.fecha}" readonly="true">
+                        <f:convertDateTime pattern="dd-MM-yyyy" />
+                    </h:inputText>
+                    <h:commandButton value="Registrar" action="goHome" />
+                    <h:messages globalOnly="true"/>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

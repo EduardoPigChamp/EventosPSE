@@ -45,6 +45,22 @@ public class fetchEventsFromInternet {
         this.fecha = fecha;
     }
     
+    public List<LocationBEAN> getFreeLocations(Date fecha) throws Exception
+    {
+        SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");        
+        
+        Client client = ClientBuilder.newClient();
+        WebTarget target = client.target("http://valdavia.infor.uva.es:8080/disponibilidad_estadios/webresources/dispestadios/estadios?fecha="+sf.format(fecha));
+        Response res = target.request(MediaType.APPLICATION_JSON).get();
+        
+        if(res.getStatus() == 404) throw new Exception("No se han encontrado estadios ese dia. Error 404");
+        
+        String respuesta = res.readEntity(String.class);
+        res.close();
+        
+        return parseFromJSONtoList(respuesta);
+    }
+    
     public void getFreeLocations() throws Exception
     {
         SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");        

@@ -5,8 +5,10 @@
  */
 package Beans;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.flow.FlowScoped;
 import javax.inject.Named;
 
 /**
@@ -14,8 +16,8 @@ import javax.inject.Named;
  * @author equintana
  */
 @Named
-@RequestScoped 
-public class LocationBEAN {
+@RequestScoped
+public class LocationBEAN{
     private Integer id;
     private String nombre_estadio;
     private Date fecha;

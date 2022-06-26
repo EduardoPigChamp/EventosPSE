@@ -91,6 +91,15 @@ public class EventosFacadeREST extends AbstractFacade<Eventos> {
             getResultList();
     }
     
+    @GET
+    @Path("max")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Integer maxId() {
+        Integer res = (Integer)em.createQuery("SELECT MAX(u.identifier) FROM Eventos u").getSingleResult();
+        if(res == null) res = 0;
+        return res;
+    }
+    
     @Override
     protected EntityManager getEntityManager() {
         return em;
