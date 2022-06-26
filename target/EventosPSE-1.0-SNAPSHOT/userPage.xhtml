@@ -38,7 +38,7 @@
                         <f:convertDateTime pattern="dd-MM-yyyy" />
                     </h:inputText>
                     <h:commandButton value="Actualizar" action="#{sessionBEAN.updateUser()}" />
-                    <h:commandButton value="Borrar Cuenta" action="#{sessionBEAN.dropUser()}" />
+                    <h:commandButton value="Borrar Cuenta" action="#{sessionBEAN.dropUser()}" rendered="#{!sessionBEAN.isOrganizator()}" />
                     <h:messages globalOnly="true" />
                 </h:form>
             </ui:define>

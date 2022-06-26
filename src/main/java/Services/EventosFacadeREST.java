@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Services;
 
 import Entities.Eventos;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -24,6 +20,7 @@ import javax.ws.rs.core.MediaType;
  *
  * @author equintana
  */
+
 @Stateless
 @Path("entities.eventos")
 public class EventosFacadeREST extends AbstractFacade<Eventos> {
@@ -83,9 +80,19 @@ public class EventosFacadeREST extends AbstractFacade<Eventos> {
         return String.valueOf(super.count());
     }
 
+    @GET
+    @Path("future_events/{date}")
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public List<Eventos> futureEvents(@PathParam("date") Date date)
+    {
+        return em.
+            createQuery("SELECT c FROM Eventos c WHERE c.fecha >= :date").
+            setParameter("date", date).
+            getResultList();
+    }
+    
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
-    
 }

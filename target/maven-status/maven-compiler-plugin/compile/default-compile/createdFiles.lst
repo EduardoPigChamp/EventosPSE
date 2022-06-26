@@ -1,5 +1,6 @@
+Chat\ChatServer.class
 Converters\passwordConverter.class
-Beans\EventoBean.class
+Beans\eventosBEAN.class
 Beans\sessionBEAN.class
 Beans\LocationBEAN.class
 Beans\userBEAN.class

@@ -2,6 +2,8 @@ package Entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,6 +22,9 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  * @author equintana
  */
+
+@Named
+@RequestScoped
 @Entity
 @Table(name = "eventos")
 @XmlRootElement

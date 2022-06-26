@@ -16,15 +16,17 @@
         <div id="top">
             <h><strong>eventos.com</strong></h>
         </div>
-        <div>
+        <div style="display: flex; height: 80%">
             <div id="left">
-                <h:form class="row_form">
+                <h:form class="row_form" style="display: flex; flex-direction: column;">
                     <h:commandButton value="Iniciar Sesión" class="left_button" action="/signIn" rendered="#{!sessionBEAN.checkSession()}" />
                     <h:commandButton value="Cerrar Sesión" class="left_button" rendered="#{sessionBEAN.checkSession()}" action="#{sessionBEAN.closeSession()}" />
                     <h:commandButton value="Registrarse" class="left_button" rendered="#{!sessionBEAN.checkSession()}" action="/registerUser"/>
                     <h:commandButton value="Pagina de Usuario" class="left_button" rendered="#{sessionBEAN.checkSession()}" action="/userPage"/>
                     <h:commandButton value="Crear Organizador" class="left_button" rendered="#{sessionBEAN.isAdmin()}" action="/registerOrganizator" />
                     <h:commandButton value="Crear Evento" class="left_button" rendered="#{sessionBEAN.isOrganizator()}" action="/mostrarLocations"/>
+                    <h:commandButton value="Mostrar Eventos" class="left_button" action="/mostrarEventos"/>
+                    <h:commandButton value="Chat" action="/chat/chatroom"/>
                 </h:form>
             </div>
             <div id="content" class="left_content">
