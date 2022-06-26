@@ -12,7 +12,7 @@
             <ui:define name="content">
                 <f:view>
                     <h:form>
-                        <h:dataTable value="#{crearEvento.getEventos()}" var="item">
+                        <h:dataTable value="#{eventoBEAN.getFutureEventos()}" var="item">
                             <h:column>    				
                                 <f:facet name = "header">Ciudad</f:facet>    				
                                 #{item.ciudad}

@@ -6,10 +6,15 @@
 package Beans;
 
 import Entities.Usuario;
+import Services.EventosFacadeREST;
+import Services.ReservasFacadeREST;
 import Services.UsuarioFacadeREST;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 /**
@@ -23,11 +28,15 @@ public class userBEAN {
 
     @EJB
     private final UsuarioFacadeREST service = new UsuarioFacadeREST();
+    @EJB
+    private final EventosFacadeREST serviceEvento = new EventosFacadeREST();
+    @EJB
+    private final ReservasFacadeREST serviceREserva = new ReservasFacadeREST();
     
     private String userName;
     private Integer pass;
     private Integer adminn;
-    private int identifier;
+    private Integer identifier;
     private String nombre;
     private String apellido1;
     private String apellido2;
@@ -160,5 +169,25 @@ public class userBEAN {
         user.setIdentifier(service.maxId() + 1);
         
         service.create(user);
+    }
+    
+    public String eliminarOrganizador()
+    {
+        try
+        {
+            service.remove(this.userName);
+        }
+        catch(Exception e)
+        {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(e.getMessage()));
+            return null;
+        }
+        
+        return "/index";
+    }
+    
+    public List<Usuario> getOrganizators()
+    {
+        return service.getOrganizators();
     }
 }

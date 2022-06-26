@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../WEB-INF/newTemplate1.xhtml">
+
+            <ui:define name="content">
+                <h:form>
+                    <h:selectOneRadio value="#{comprarEntrada.idEvento}" required="true">
+                        <c:forEach items="#{eventoBEAN.getFutureEventos()}" var="item">
+                            <f:selectItem itemValue="#{item.identifier}" itemLabel="#{item.nombre}" />
+                        </c:forEach>
+                    </h:selectOneRadio>
+                    <h:commandButton value="Comprar" action="numeroEntradas" />
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

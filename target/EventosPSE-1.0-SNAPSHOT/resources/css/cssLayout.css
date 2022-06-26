@@ -1,6 +1,8 @@
 html, body{
     height: 100%;
     width: 100%;
+    background-color: #6ab3eb;
+
 }
 
 #top {
@@ -20,9 +22,11 @@ p{
 
 #left {
     float: left;
-    background-color: #ece3a5;
+    background-color:  #c9f8db;
     width: 30%;
-    height: 100%
+    height: 100%;
+    border-radius: 0 20px 20px 0;
+    border-right: 2px solid white;
 }
 
 #right {
@@ -31,15 +35,22 @@ p{
     width: 150px;
 }
 
-.center_content {
-    background-color: #dddddd;
-    height: 70%;
+#content {
+    background-color: white;
+    height: 80%;
+    background-color: #6ab3eb;
+    text-align: center;
+    display: flex;
+    color: white;
 }
 
 .left_content {
-    background-color: #dddddd;
+    background-color: #6ab3eb;
     height: 100%;
     width: 70%;
+    text-align: center;
+    display: flex;
+    color: white;
 }
 
 .right_content {
@@ -56,6 +67,23 @@ p{
   color: black;
   font-weight : bold;
   text-decoration : underline;
+}
+
+.left_button
+{
+    height: 100%;
+    margin: 10px 15%;
+    border: 0;
+    border-radius: 15px;
+    background-color: #00a1db;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: fantasy;
+}
+
+.left_button:hover
+{
+    background-color: #036fab;
 }
 
 

@@ -92,6 +92,13 @@ public class UsuarioFacadeREST extends AbstractFacade<Usuario> {
         return res;
     }
     
+    @GET
+    @Path("organizators")
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public List<Usuario> getOrganizators() {
+        return em.createQuery("SELECT o FROM Usuario o WHERE o.organizator = 1").getResultList();
+    }
+    
     @Override
     protected EntityManager getEntityManager() {
         return em;

@@ -158,9 +158,10 @@ public class sessionBEAN {
         }
     }
     
-    private void createSession(Usuario user)
+    private String createSession(Usuario user)
     {
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("LoguedUser", user);
+        return "/index";
     }
     
     public boolean checkSession()
@@ -168,9 +169,10 @@ public class sessionBEAN {
         return FacesContext.getCurrentInstance().getExternalContext().getSessionMap().containsKey("LoguedUser");
     }
     
-    public void closeSession()
+    public String closeSession()
     {
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().clear();
+        return "/index";
     }
         
     private Usuario getSession()

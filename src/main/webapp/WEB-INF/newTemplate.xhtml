@@ -14,19 +14,23 @@
     <h:body>
 
         <div id="top">
-            <h><strong>eventos.com</strong></h>
+            <div style="width: 30%; color: white; display: flex; text-align: center;"><div style="margin:auto; height: 100%;">eventos.com</div></div><div style="width: 70%;"></div>
         </div>
         <div style="display: flex; height: 80%">
             <div id="left">
-                <h:form class="row_form" style="display: flex; flex-direction: column;">
+                <h:form class="row_form" style="display: flex; flex-direction: column; height: 100%;">
                     <h:commandButton value="Iniciar Sesión" class="left_button" action="/signIn" rendered="#{!sessionBEAN.checkSession()}" />
                     <h:commandButton value="Cerrar Sesión" class="left_button" rendered="#{sessionBEAN.checkSession()}" action="#{sessionBEAN.closeSession()}" />
                     <h:commandButton value="Registrarse" class="left_button" rendered="#{!sessionBEAN.checkSession()}" action="/registerUser"/>
                     <h:commandButton value="Pagina de Usuario" class="left_button" rendered="#{sessionBEAN.checkSession()}" action="/userPage"/>
                     <h:commandButton value="Crear Organizador" class="left_button" rendered="#{sessionBEAN.isAdmin()}" action="/registerOrganizator" />
+                    <h:commandButton value="Eliminar Organizador" class="left_button" rendered="#{sessionBEAN.isAdmin()}" action="/eliminarOrganizator" />
                     <h:commandButton value="Crear Evento" class="left_button" rendered="#{sessionBEAN.isOrganizator()}" action="crearEvento"/>
                     <h:commandButton value="Mostrar Eventos" class="left_button" action="/mostrarEventos"/>
-                    <h:commandButton value="Chat" action="/chat/chatroom"/>
+                    <h:commandButton value="Eliminar Eventos Organizados" class="left_button" action="/mostrarEventosOrganizados" rendered="#{sessionBEAN.isOrganizator()}"/>
+                    <h:commandButton value="Modificar Eventos Organizados" class="left_button" action="modificarEvento" rendered="#{sessionBEAN.isOrganizator()}"/>
+                    <h:commandButton value="Comprar Entrada" class="left_button" rendered="#{sessionBEAN.checkSession()}" action="comprarEntrada"/>
+                    <h:commandButton value="Chat" class="left_button" action="/chat/chatroom"/>
                 </h:form>
             </div>
             <div id="content" class="left_content">

@@ -4,6 +4,8 @@ import Entities.Eventos;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
@@ -92,11 +94,33 @@ public class EventosFacadeREST extends AbstractFacade<Eventos> {
     }
     
     @GET
+    @Path("organizedEvents/{idOrganicer}")
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public List<Eventos> eventsByOrganizer(@PathParam("idOrganicer") Integer idOrganicer)
+    {
+        return em.
+            createQuery("SELECT c FROM Eventos c WHERE c.organizador = :idOrganicer").
+            setParameter("idOrganicer", idOrganicer).
+            getResultList();
+    }
+    
+    @GET
     @Path("max")
     @Produces(MediaType.TEXT_PLAIN)
     public Integer maxId() {
         Integer res = (Integer)em.createQuery("SELECT MAX(u.identifier) FROM Eventos u").getSingleResult();
         if(res == null) res = 0;
+        return res;
+    }
+    
+    @GET
+    @Path("entradasDisponibles/{id}")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Integer entradasDisponibles(@PathParam("id") Integer id) {
+        Integer res = (Integer)em.
+                createQuery("SELECT u.entradasDisponibles FROM Eventos u WHERE u.identifier = :id").
+                setParameter("id", id).
+                getSingleResult();
         return res;
     }
     
