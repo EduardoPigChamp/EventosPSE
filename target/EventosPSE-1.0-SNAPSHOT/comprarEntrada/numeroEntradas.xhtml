@@ -10,17 +10,17 @@
         <ui:composition template="./../WEB-INF/newTemplate1.xhtml">
 
             <ui:define name="content">
-                <h1>Seleccione el Número de Entradas que Desea Comprar</h1>
-                
-                <h:form>
+                <h:form style="margin:auto; display: flex; text-align: center; flex-direction: column;">
+                    <h1 style="color:white">Seleccione el Número de Entradas que Desea Comprar</h1>
+                    
                     <h:outputLabel for="entradas" value="Entradas disponibles: #{eventoBEAN.getentradasDisponibles(comprarEntrada.idEvento)}" />
                     <h:inputText id="entradas" value="#{comprarEntrada.numEntradas}" required="true">
                         <f:validateLongRange minimum="1" maximum="#{eventoBEAN.getentradasDisponibles(comprarEntrada.idEvento)}"/>
                     </h:inputText>
                     <h:message for="entradas"/>
                     <h:commandButton value="Comprar Y Mostrar" action="#{comprarEntrada.buyAndShow()}" />
+                    <h:messages globalOnly="true"/>
                 </h:form>
-                <h:messages globalOnly="true"/>
             </ui:define>
 
         </ui:composition>

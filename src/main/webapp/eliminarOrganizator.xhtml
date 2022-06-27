@@ -11,8 +11,8 @@
         <ui:composition template="./WEB-INF/newTemplate.xhtml">
 
             <ui:define name="content">
-                <h:form>
-                    <h:selectOneRadio value="#{userBEAN.userName}" required="true">
+                <h:form style="margin:auto; display: flex; flex-direction: column; text-align: center;">
+                    <h:selectOneRadio value="#{userBEAN.userName}" required="true" layout="pageDirection">
                         <c:forEach items="#{userBEAN.getOrganizators()}" var="item">
                             <f:selectItem itemValue="#{item.userName}" itemLabel="#{item.userName}" />
                         </c:forEach>

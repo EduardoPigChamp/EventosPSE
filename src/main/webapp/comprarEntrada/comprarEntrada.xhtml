@@ -11,13 +11,13 @@
         <ui:composition template="./../WEB-INF/newTemplate1.xhtml">
 
             <ui:define name="content">
-                <h:form>
-                    <h:selectOneRadio value="#{comprarEntrada.idEvento}" required="true">
+                <h:form style="text-align: center; display: flex; flex-direction: column; margin: auto">
+                    <h:selectOneRadio value="#{comprarEntrada.idEvento}" required="true" layout="pageDirection">
                         <c:forEach items="#{eventoBEAN.getFutureEventos()}" var="item">
                             <f:selectItem itemValue="#{item.identifier}" itemLabel="#{item.nombre}" />
                         </c:forEach>
                     </h:selectOneRadio>
-                    <h:commandButton value="Comprar" action="numeroEntradas" />
+                    <h:commandButton value="Comprar" action="numeroEntradas" class="left_button"/>
                 </h:form>
             </ui:define>
 

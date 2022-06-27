@@ -10,7 +10,7 @@
 
             <ui:define name="content">
                 <!--form action=""-->
-                    <table>
+                <table style="text-align: center; margin: auto">
                         <tr>
                             <td>
                                 <h3><h:outputLabel value="Mensajes"/></h3>
@@ -37,7 +37,7 @@
                         </tr>
                     </table>
                 <!--/form-->
-                <div id="output"></div>
+                <div id="output" style="visibility: hidden"></div>
                 <script language="javascript" type="text/javascript"
                         src="${facesContext.externalContext.requestContextPath}/chat/websocket.js">
                 </script>

@@ -4,7 +4,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:p="http://primefaces.org/ui">
 
     <body>
 
@@ -13,13 +13,46 @@
             <ui:define name="content">
                     <!--EN ESTA PARTE SE MUESTRAB LOS EVENTOS-->
                 <f:view>
-                    <c:forEach items="#{eventoBEAN.getEventosByOrganicer(sessionBEAN.identifier)}" var="item">
-                        <h:form>
-                            <h:outputLabel value="#{item.nombre}"/>
-                            <h:outputLabel value="#{item.fecha}"/>
-                            <h:commandButton action="#{eventoBEAN.deleteEventById(item.identifier)}" value="borrar"/>
-                        </h:form>
-                    </c:forEach>
+                        <p:dataTable value="#{eventoBEAN.getEventosByOrganicer(sessionBEAN.identifier)}" var="item" style="margin: 15px 15px">
+                            <p:column>    				
+                                <f:facet name = "header">Ciudad</f:facet>    				
+                                #{item.ciudad}
+                            </p:column>
+   
+                            <p:column>
+                                <f:facet name = "header">Entradas Disponibles</f:facet>
+                                #{item.entradasDisponibles}
+                            </p:column>
+   
+                            <p:column>
+                                <f:facet name = "header">Entradas Totales</f:facet>
+                                #{item.entradasTotales}
+                            </p:column>
+                            
+                            <p:column>
+                                <f:facet name = "header">Estadio</f:facet>
+                                #{item.estadio}
+                            </p:column>
+                            
+                            <p:column>
+                                <f:facet name = "header">Fecha</f:facet>
+                                    <h:outputText value="#{item.fecha}" >
+                                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                                    </h:outputText>
+                            </p:column>
+                            
+                            <p:column>
+                                <f:facet name = "header">Nombre</f:facet>
+                                #{item.nombre}
+                            </p:column>
+                            
+                            <p:column>
+                                <f:facet name = "header">Nombre</f:facet>
+                                <h:form>
+                                    <h:commandButton action="#{eventoBEAN.deleteEventById(item.identifier)}" value="borrar" class="left_button"/>
+                                </h:form>
+                            </p:column>
+                        </p:dataTable>
                 </f:view>
             </ui:define>
 

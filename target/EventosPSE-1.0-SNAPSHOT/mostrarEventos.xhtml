@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <body>
 
@@ -11,39 +12,39 @@
 
             <ui:define name="content">
                 <f:view>
-                    <h:form>
-                        <h:dataTable value="#{eventoBEAN.getFutureEventos()}" var="item">
-                            <h:column>    				
+                    <p:dataTable value="#{eventoBEAN.getFutureEventos()}" var="item" style="margin: 15px 15px">
+                            <p:column>    				
                                 <f:facet name = "header">Ciudad</f:facet>    				
                                 #{item.ciudad}
-                            </h:column>
+                            </p:column>
    
-                            <h:column>
+                            <p:column>
                                 <f:facet name = "header">Entradas Disponibles</f:facet>
                                 #{item.entradasDisponibles}
-                            </h:column>
+                            </p:column>
    
-                            <h:column>
+                            <p:column>
                                 <f:facet name = "header">Entradas Totales</f:facet>
                                 #{item.entradasTotales}
-                            </h:column>
+                            </p:column>
                             
-                            <h:column>
+                            <p:column>
                                 <f:facet name = "header">Estadio</f:facet>
                                 #{item.estadio}
-                            </h:column>
+                            </p:column>
                             
-                            <h:column>
+                            <p:column>
                                 <f:facet name = "header">Fecha</f:facet>
-                                #{item.fecha}
-                            </h:column>
+                                    <h:outputText value="#{item.fecha}" >
+                                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                                    </h:outputText>
+                            </p:column>
                             
-                            <h:column>
+                            <p:column>
                                 <f:facet name = "header">Nombre</f:facet>
                                 #{item.nombre}
-                            </h:column>
-                        </h:dataTable>
-                    </h:form>
+                            </p:column>
+                        </p:dataTable>
                 </f:view>
 
             </ui:define>

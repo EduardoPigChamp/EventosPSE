@@ -10,11 +10,11 @@
         <ui:composition template="./../WEB-INF/newTemplate1.xhtml">
 
             <ui:define name="content">
-                <p:panelGrid columns="2">
+                <p:panelGrid columns="2" style="text-align: center; margin: auto;">
                     <h:outputText value="Código QR con tu entrada:" />
                     <p:barcode value="Aquí está tu entrada para #{comprarEntrada.toString()}" type="qr"/>
                     <h:form>
-                        <h:commandButton value="validarCompra" action="goHome"/>
+                        <h:commandButton value="validarCompra" action="goHome" class="left_button"/>
                     </h:form>
                 </p:panelGrid>
             </ui:define>

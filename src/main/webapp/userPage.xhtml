@@ -10,7 +10,7 @@
         <ui:composition template="./WEB-INF/newTemplate.xhtml">
 
             <ui:define name="content">
-                <h:form style="display: flex; flex-direction: column; text-align: center">
+                <h:form style="display: flex; flex-direction: column; text-align: center; margin: auto;">
                     <h:outputLabel for="Nombre" value="Nombre:"/>
                     <h:inputText required="true" id="Nombre" value="#{sessionBEAN.nombre}"/>
                     <h:message for="Nombre"/>
@@ -37,8 +37,8 @@
                     <h:inputText required="true" id="fecha_nacimiento" value="#{sessionBEAN.fechaNacimiento}">
                         <f:convertDateTime pattern="dd-MM-yyyy" />
                     </h:inputText>
-                    <h:commandButton value="Actualizar" action="#{sessionBEAN.updateUser()}" />
-                    <h:commandButton value="Borrar Cuenta" action="#{sessionBEAN.dropUser()}" rendered="#{!sessionBEAN.isOrganizator()}" />
+                    <h:commandButton value="Actualizar" action="#{sessionBEAN.updateUser()}" class="left_button"/>
+                    <h:commandButton value="Borrar Cuenta" action="#{sessionBEAN.dropUser()}" rendered="#{!sessionBEAN.isOrganizator()}" class="left_button" />
                     <h:messages globalOnly="true" />
                 </h:form>
             </ui:define>

@@ -1,0 +1,65 @@
+CREATE DATABASE extra
+    WITH 
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'Spanish_Spain.1252'
+    LC_CTYPE = 'Spanish_Spain.1252'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+
+CREATE TABLE IF NOT EXISTS public.usuario
+(
+    user_name character varying COLLATE pg_catalog."default" NOT NULL,
+    pass integer,
+    adminn integer,
+    identifier integer NOT NULL DEFAULT nextval('usuario_identifier_seq'::regclass),
+    nombre character varying COLLATE pg_catalog."default",
+    apellido1 character varying COLLATE pg_catalog."default",
+    apellido2 character varying COLLATE pg_catalog."default",
+    dni character varying COLLATE pg_catalog."default",
+    fecha_nacimiento date,
+    telefono character varying COLLATE pg_catalog."default",
+    organizator integer,
+    CONSTRAINT usuario_pkey PRIMARY KEY (user_name),
+    CONSTRAINT usuario_identifier_key UNIQUE (identifier)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.usuario
+    OWNER to postgres;
+
+create table eventos(
+	nombre varchar,
+	ciudad varchar,
+	estadio varchar,
+	fecha date,
+	entradas_totales int,
+	entradas_disponibles int,
+	organizador int,
+	identifier serial PRIMARY KEY
+);
+
+insert into usuario values ('Eduardo', 696413378, 1, DEFAULT, 'Eduardo', 'Quintana', 'Adeva', '70268735D', '1997-04-18', '640822741', 0);
+
+CREATE TABLE IF NOT EXISTS public.locations
+(
+    id integer NOT NULL,
+    disponibilidad boolean,
+    fecha timestamp without time zone,
+    nombre_estadio character varying(255) COLLATE pg_catalog."default",
+    CONSTRAINT locations_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.locations
+    OWNER to postgres;
+
+create table reservas(
+	idcliente int,
+	idevento int,
+	numeroentradas int,
+
+	PRIMARY KEY(idcliente, idevento)
+);

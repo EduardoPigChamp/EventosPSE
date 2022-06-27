@@ -10,13 +10,13 @@
         <ui:composition template="./WEB-INF/newTemplate.xhtml">
 
             <ui:define name="content">
-                <h:form>
+                <h:form style="display: flex; flex-direction: column; margin:auto; text-align:center;">
                     <h:outputLabel for="Email" value="Email:" />
                     <h:inputText id="Email" required="true" value="#{sessionBEAN.username}">
                     </h:inputText>
                     <h:outputLabel for="Password" value="Contraseña:" />
                     <h:inputText id="Password" required="true" value="#{sessionBEAN.password}" />
-                    <h:commandButton value="Entrar" action="#{sessionBEAN.createSession()}"/>
+                    <h:commandButton value="Entrar" action="#{sessionBEAN.createSession()}" class="left_button"/>
                         <h:messages globalOnly="true"/>
                 </h:form>
             </ui:define>
